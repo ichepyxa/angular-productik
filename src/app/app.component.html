@@ -10,12 +10,8 @@
       type="text"
       placeholder="Введите название..."
       class="border rounded-lg py-3 px-6 outline-none text-lg w-full block"
+      [(ngModel)]="filterProductName"
     />
-    <button
-      class="bg-yellow-400 hover:bg-yellow-500 py-3 px-16 rounded-lg transition duration-300 text-lg"
-    >
-      Найти
-    </button>
   </div>
 
   <div *ngIf="loading" class="flex justify-center items-center">
@@ -328,10 +324,14 @@
       </g>
     </svg>
   </div>
-  <div class="flex flex-col gap-3">
+  <div *ngIf="products$ | async as products" class="flex flex-col gap-3">
     <app-product
-      *ngFor="let product of products$ | async"
+      *ngFor="let product of products | filterProducts: filterProductName"
       [product]="product"
     ></app-product>
   </div>
 </div>
+
+<app-modal title="Создание продукта">
+  <app-create-product></app-create-product>
+</app-modal>

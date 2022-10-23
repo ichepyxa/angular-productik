@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   title = 'Productik';
   loading = false;
   products$: Observable<IProduct[]> | undefined;
+  filterProductName = '';
 
   constructor(private productService: ProductServices) {}
 

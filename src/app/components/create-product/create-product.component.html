@@ -1,0 +1,58 @@
+<form [formGroup]="form" (submit)="submit()" class="w-full">
+  <div class="mb-4">
+    <input
+      formControlName="title"
+      type="text"
+      placeholder="Название продукта"
+      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block"
+      maxlength="100"
+    />
+    <p
+      *ngIf="title.errors && title.touched"
+      class="text-red-600 font-medium px-2"
+    >
+      Название не может быть пустым, должно быть больше 3 и меньше 100 символов
+    </p>
+  </div>
+
+  <div class="mb-4">
+    <input
+      formControlName="price"
+      type="number"
+      placeholder="Цена продукта"
+      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block"
+      max="1000000000000"
+      min="0"
+    />
+    <p
+      *ngIf="price.errors && price.touched"
+      class="text-red-600 font-medium px-2"
+    >
+      Максимальная цена - 1.000.000.000.000
+    </p>
+  </div>
+
+  <div class="mb-4">
+    <textarea
+      formControlName="description"
+      type="text"
+      placeholder="Описание"
+      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block resize-none"
+      maxlength="255"
+      rows="6"
+    ></textarea>
+    <p
+      *ngIf="description.errors && description.touched"
+      class="text-red-600 font-medium px-2"
+    >
+      Описание не может быть пустым и должно быть меньше 255 символов
+    </p>
+  </div>
+
+  <button
+    type="submit"
+    class="py-3 px-5 bg-yellow-400 hover:bg-yellow-500 rounded-lg transition duration-300 w-full mt-5"
+  >
+    Создать
+  </button>
+</form>
