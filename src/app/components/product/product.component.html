@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between">
     <div class="flex items-center justify-center gap-5">
       <img [src]="product.image" alt="" class="w-20 h-20 rounded-lg" />
-      <h2 class="text-white text-xl max-w-3xl font-bold">
+      <h2 class="text-white text-xl max-w-2xl font-bold">
         {{ product.title }}
       </h2>
     </div>
@@ -25,13 +25,23 @@
     </div>
   </div>
 
-  <div *ngIf="isShowDetails" class="flex items-center justify-between">
-    <p class="text-white text-lg font-light max-w-5xl break-words">
-      {{ product.description }}
-    </p>
+  <div *ngIf="isShowDetails">
     <p class="text-white">
-      Рейтинг:
-      <span class="font-bold">{{ product.rating.rate | number: "1.1-2" }}</span>
+      Количество:
+      <span class="font-bold">{{ product.rating.count | number }}</span>
+      штук(а)
     </p>
+    <div class="flex items-center justify-between">
+      <p class="text-white text-lg font-light max-w-4xl break-words">
+        Описание:
+        {{ product.description }}
+      </p>
+      <p class="text-white">
+        Рейтинг:
+        <span class="font-bold">{{
+          product.rating.rate | number: "1.1-2"
+        }}</span>
+      </p>
+    </div>
   </div>
 </div>

@@ -4,8 +4,9 @@
       formControlName="title"
       type="text"
       placeholder="Название продукта"
-      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block"
+      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block focus:border-yellow-400 transition duration-150"
       maxlength="100"
+      appFocus
     />
     <p
       *ngIf="title.errors && title.touched"
@@ -20,7 +21,7 @@
       formControlName="price"
       type="number"
       placeholder="Цена продукта"
-      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block"
+      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block focus:border-yellow-400 transition duration-150"
       max="1000000000000"
       min="0"
     />
@@ -37,7 +38,7 @@
       formControlName="description"
       type="text"
       placeholder="Описание"
-      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block resize-none"
+      class="border rounded-lg py-3 px-6 mb-2 outline-none text-lg w-full block resize-none focus:border-yellow-400 transition duration-150"
       maxlength="255"
       rows="6"
     ></textarea>
@@ -51,7 +52,7 @@
 
   <button
     type="submit"
-    class="py-3 px-5 bg-yellow-400 hover:bg-yellow-500 rounded-lg transition duration-300 w-full mt-5"
+    class="py-3 px-5 bg-yellow-400 hover:bg-yellow-500 rounded-lg transition duration-300 w-full"
   >
     Создать
   </button>

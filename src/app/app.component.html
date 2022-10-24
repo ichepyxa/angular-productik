@@ -1,6 +1,6 @@
 <app-global-error></app-global-error>
 
-<div class="max-w-7xl mx-auto mt-10">
+<div class="max-w-6xl mx-auto my-10">
   <h1 class="text-center text-4xl font-semibold">
     {{ title | uppercase }}
   </h1>
@@ -324,14 +324,24 @@
       </g>
     </svg>
   </div>
-  <div *ngIf="products$ | async as products" class="flex flex-col gap-3">
+  <div *ngIf="productService.products" class="flex flex-col gap-3">
     <app-product
-      *ngFor="let product of products | filterProducts: filterProductName"
+      *ngFor="
+        let product of productService.products
+          | filterProducts: filterProductName
+      "
       [product]="product"
     ></app-product>
   </div>
 </div>
 
-<app-modal title="Создание продукта">
+<app-modal *ngIf="modalService.isVisible$ | async" title="Создание продукта">
   <app-create-product></app-create-product>
 </app-modal>
+
+<button
+  (click)="modalService.open()"
+  class="rounded-full p-3 fixed right-10 bottom-10 bg-yellow-400 flex justify-center items-center z-30 shadow-md shadow-yellow-700 transition duration-300 hover:bg-yellow-500"
+>
+  <span class="text-white text-4xl leading-none w-10 h-10">+</span>
+</button>

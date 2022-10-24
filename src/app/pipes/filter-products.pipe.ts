@@ -6,6 +6,7 @@ import { IProduct } from '../models/product';
 })
 export class FilterProductsPipe implements PipeTransform {
   transform(products: IProduct[], searchTitle: string): IProduct[] {
+    if (searchTitle.length === 0) return products;
     return products.filter((product) =>
       product.title.toLowerCase().includes(searchTitle.toLowerCase())
     );
